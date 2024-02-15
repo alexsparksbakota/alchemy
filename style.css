@@ -1,0 +1,22 @@
+#main_cover {
+    background-color: #32594a;
+    height: 50vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #fff5e1;
+    display: flex;
+    justify-content: center;
+}
+
+#cover_logo {
+    height: auto;
+    width: 60%;
+}
