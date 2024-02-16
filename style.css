@@ -1,0 +1,43 @@
+#main_cover {
+    background-color: #32594a;
+    height: 50vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #fff5e1;
+    display: flex;
+    justify-content: center;
+}
+
+#cover_logo {
+    height: auto;
+    width: 60%;
+}
+
+#upload_button_container {
+    border-radius: 50%;
+    border: 4px solid #fff5e1;
+    background-color: #32594A;
+    z-index: 10;
+    height: 7vw;
+    width: 7vw;
+    position: absolute;
+    top: 88%;
+}
+
+#image_preview {
+    position: absolute;
+    width: 64%;
+    height: 36%;
+    background-position: center;
+    background-size:contain ;
+    background-repeat: no-repeat;
+    margin-top: 60vh;
+}
