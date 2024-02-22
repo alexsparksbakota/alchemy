@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+    height: 100%;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+    flex: 50%;
+}
