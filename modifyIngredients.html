@@ -1,18 +1,50 @@
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Alchemy</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
-        <link rel="stylesheet" href="ingredients.css">
-    </head>
-    <body style="margin:0">
-        <div class="row">
-            <div class="column" style="background-color:#fff5e1;">      
-            </div>
-            <div class="column" style="background-color:#32594a; text-align: center;">
-                <h1> Title </h1>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alchemy</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link rel="stylesheet" href="ingredients.css">
+    
+</head>
+
+<body style="margin:0">
+    <div class="row">
+        <div class="column" style="background-color:#fff5e1;">
+        </div>
+        <div class="column" style="background-color:#32594a; text-align: center;">
+            <h1> Specify Dietary Prefrences </h1>
+            <div id="input-form-container">
+                <form>
+                    <h3>MEAL TYPE</h3>
+                    <input type="checkbox" id="breakfast">
+                    <label for="breakfast" class="input-form-labels">BREAKFAST</label>
+                    <input type="checkbox" id="lunch">
+                    <label for="breakfast" class="input-form-labels">LUNCH</label>
+                    <input type="checkbox" id="dinner">
+                    <label for="breakfast" class="input-form-labels">DINNER</label>
+                    <br>
+                    <h3>DIETARY RESTRICTIONS</h3>
+                    <input type="checkbox" id="vegetarian">
+                    <label for="breakfast" class="input-form-labels">VEGETARIAN</label>
+                    <input type="checkbox" id="vegan">
+                    <label for="breakfast" class="input-form-labels">VEGAN</label>
+                    <input type="checkbox" id="keto">
+                    <label for="breakfast">KETO</label>
+                    <input type="checkbox" id="eggetarian">
+                    <label for="breakfast" class="input-form-labels">EGGETARIAN</label>
+                    <input type="checkbox" id="pescatarian">
+                    <label for="breakfast" class="input-form-labels">PESCATARIAN</label>
+                    <input type="checkbox" id="paleo">
+                    <label for="breakfast" class="input-form-labels">PALEO</label>
+                   
+                </form>
             </div>
         </div>
-    </body>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
 </html>
