@@ -62,6 +62,12 @@
                     <br>
                     <label for="timelimit"><h3>TIME LIMIT</h3></label>
                     <input type="range" min="0" max="200" id="timelimit">
+                    <label for="timelimit"><h3>TIME LIMIT</h3></label>
+                    <input type="range" min="0" max="200" id="timelimit">  
+                    <p><span id="time-limit-count"></span> minutes</p>  
+                    <label for="other-preferences"><h3>OTHER PREFERENCES</h3></label> 
+                    <p>Please describe any other dietary preferences/restrictions you may have.</p>
+                    <input type="text" id="other-preferences">  
                 </form>
             </div>
         </div>
@@ -76,6 +82,14 @@
         slider.oninput = function() {
             output.innerHTML = this.value;
         }
+        var timeSlider = document.getElementById("timelimit");
+        var timeLimitCount = document.getElementById("time-limit-count");
+        timeLimitCount.innerHTML = timeSlider.value; // Display the default slider value
+        // Update the current slider value (each time you drag the slider handle)
+        timeSlider.oninput = function() {
+            timeLimitCount.innerHTML = this.value;
+        }
+
     </script>
 </body>
 
