@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'Agrandir';
+    src: url('fonts/Agrandir/Agrandir-GrandHeavy.otf');
+    font-display: swap
+}
+body{
+    font-family: 'Jost';
+}
 #main_cover {
     background-color: #32594a;
     height: 50vh;
@@ -7,13 +15,20 @@
     justify-content: center;
     position: relative;
 }
+.page-title{
+    font-family: Agrandir;
+    color: #fff5e1;
+}
 
-body {
+#index-page-body {
     margin: 0;
     padding: 0;
     background-color: #fff5e1;
     display: flex;
     justify-content: center;
+}
+#modifyIngredients-body{
+    margin:0;
 }
 
 #cover_logo {
@@ -40,4 +55,34 @@ body {
     background-size:contain ;
     background-repeat: no-repeat;
     margin-top: 60vh;
+}
+
+.row {
+    display: flex;
+    height: 100vh;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+    flex: 50vw;
+}
+
+#input-form-container {
+    background-color: #fff5e1;
+    width: 85%;
+    height: auto;
+    margin: 5%;
+    padding: 2%;
+
+}
+label {
+    color: #32594a;
+}
+
+.form-subheadings{
+    color: #32594A;
+}
+
+p{
+    color: #32594A;
 }

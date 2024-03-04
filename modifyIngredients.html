@@ -5,19 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alchemy</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
-    <link rel="stylesheet" href="ingredients.css">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Jost' rel='stylesheet'>
+
     
 </head>
 
-<body style="margin:0">
+<body id="modifyIngredients-body">
     <div class="row">
         <div class="column" style="background-color:#fff5e1;">
         </div>
         <div class="column" style="background-color:#32594a; text-align: center;">
-            <h1> Specify Dietary Prefrences </h1>
+            <h1 class="page-title"> Specify Dietary Prefrences </h1>
             <div id="input-form-container">
                 <form>
-                    <h3>MEAL TYPE</h3>
+                    <h3 class="form-subheadings">MEAL TYPE</h3>
                     <input type="checkbox" id="breakfast">
                     <label for="breakfast" class="input-form-labels">BREAKFAST</label>
                     <input type="checkbox" id="lunch">
@@ -25,23 +27,21 @@
                     <input type="checkbox" id="dinner">
                     <label for="breakfast" class="input-form-labels">DINNER</label>
                     <br>
-                    
-		    <h3>DIETARY RESTRICTIONS</h3>
+                    <h3 class="form-subheadings">DIETARY RESTRICTIONS</h3>
                     <input type="checkbox" id="vegetarian">
                     <label for="breakfast" class="input-form-labels">VEGETARIAN</label>
                     <input type="checkbox" id="vegan">
                     <label for="breakfast" class="input-form-labels">VEGAN</label>
                     <input type="checkbox" id="keto">
                     <label for="breakfast">KETO</label>
-		    <br></br>
+                    <br></br> 
                     <input type="checkbox" id="eggetarian">
                     <label for="breakfast" class="input-form-labels">EGGETARIAN</label>
                     <input type="checkbox" id="pescatarian">
                     <label for="breakfast" class="input-form-labels">PESCATARIAN</label>
                     <input type="checkbox" id="paleo">
                     <label for="breakfast" class="input-form-labels">PALEO</label>
-                    
-		    <h3>ALLERGIES/INTOLERANCES</h3>
+                    <h3 class="form-subheadings">ALLERGIES/INTOLERANCES</h3>
                     <input type="checkbox" id="peanuts">
                     <label for="breakfast" class="input-form-labels">PEANUTS</label>
                     <input type="checkbox" id="milk">
@@ -55,32 +55,26 @@
                     <label for="breakfast" class="input-form-labels">TREE NUTS</label>
                     <input type="checkbox" id="soy">
                     <label for="breakfast" class="input-form-labels">SOY</label>
-		    <br>
+                    <br>
                     <label for="calorie-slider"><h3>CALORIES</h3></label>
                     <input type="range" min="100" max="3000" id="calorie-slider">
                     <p><span id="calorie-count"></span> calories</p>
-                    <br>
-                    <label for="timelimit"><h3>TIME LIMIT</h3></label>
-                    <input type="range" min="0" max="200" id="timelimit">
                     <label for="timelimit"><h3>TIME LIMIT</h3></label>
                     <input type="range" min="0" max="200" id="timelimit">  
                     <p><span id="time-limit-count"></span> minutes</p>  
-                    <label for="other-preferences"><h3>OTHER PREFERENCES</h3></label> 
-                    <p>Please describe any other dietary preferences/restrictions you may have.</p>
-                    <input type="text" id="other-preferences">  
                 </form>
             </div>
         </div>
 
     </div>
-    <script >
-        var slider = document.getElementById("calorie-slider");
-        var output = document.getElementById("calorie-count");
-        output.innerHTML = slider.value; // Display the default slider value
+    <script>
+        var calorieSlider = document.getElementById("calorie-slider");
+        var calorieCount = document.getElementById("calorie-count");
+        calorieCount.innerHTML = calorieSlider.value; // Display the default slider value
 
         // Update the current slider value (each time you drag the slider handle)
-        slider.oninput = function() {
-            output.innerHTML = this.value;
+        calorieSlider.oninput = function() {
+            calorieCount.innerHTML = this.value;
         }
         var timeSlider = document.getElementById("timelimit");
         var timeLimitCount = document.getElementById("time-limit-count");
@@ -89,7 +83,6 @@
         timeSlider.oninput = function() {
             timeLimitCount.innerHTML = this.value;
         }
-
     </script>
 </body>
 
