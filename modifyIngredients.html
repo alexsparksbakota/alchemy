@@ -73,23 +73,7 @@
         </div>
 
     </div>
-    <script>
-        var calorieSlider = document.getElementById("calorie-slider");
-        var calorieCount = document.getElementById("calorie-count");
-        calorieCount.innerHTML = calorieSlider.value; // Display the default slider value
-
-        // Update the current slider value (each time you drag the slider handle)
-        calorieSlider.oninput = function() {
-            calorieCount.innerHTML = this.value;
-        }
-        var timeSlider = document.getElementById("timelimit");
-        var timeLimitCount = document.getElementById("time-limit-count");
-        timeLimitCount.innerHTML = timeSlider.value; // Display the default slider value
-        // Update the current slider value (each time you drag the slider handle)
-        timeSlider.oninput = function() {
-            timeLimitCount.innerHTML = this.value;
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
