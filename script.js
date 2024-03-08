@@ -1,5 +1,5 @@
-var calorieSlider = document.getElementById("calorie-slider");
-var calorieCount = document.getElementById("calorie-count");
+var calorieSlider = document.getElementById("calorie_slider");
+var calorieCount = document.getElementById("calorie_count");
 calorieCount.innerHTML = calorieSlider.value; // Display the default slider value
 
 // Update the current slider value (each time you drag the slider handle)
@@ -7,24 +7,34 @@ calorieSlider.oninput = function () {
     calorieCount.innerHTML = this.value;
 }
 var timeSlider = document.getElementById("timelimit");
-var timeLimitCount = document.getElementById("time-limit-count");
+var timeLimitCount = document.getElementById("time_limit_count");
 timeLimitCount.innerHTML = timeSlider.value; // Display the default slider value
 // Update the current slider value (each time you drag the slider handle)
 timeSlider.oninput = function () {
     timeLimitCount.innerHTML = this.value;
 }
 
-const listContainer = document.getElementById('list-container');
+const listContainer = document.getElementById('list_container');
 
 const ingredients = [
-    ["Apples", 2, "lbs"],
-    ["Bananas", 3, "pcs"],
-    ["Milk", 1, "gal"],
+    ["Avocado", 2, "pcs"],
+    ["Garlic powder", 2, "gm"],
+    ["Salt", 2, "gm"],
+    ["Pepper", 2, "gm"],
+    ["Lemon juice", 10, "ml"],
+    ["Mustard", 200, "ml"],
+    ["Bread Slice", 4, "pcs"],
+    ["Cheese", 100, "gm"],
+    ["Tomato", 3, "pcs"],
+    ["Cucumber", 1, "pcs"],
+    ["Red Onion", 2, "pcs"],
+    ["Arugula", 3, "pcs"],
+    ["Sprouts", 1, "cup"],
 ];
 
 function createListItem(ingredient, quantity, unit) {
     const listItem = document.createElement('div');
-    listItem.classList.add('list-item');
+    listItem.classList.add('list_item');
 
     const ingredientElement = document.createElement('span');
     ingredientElement.classList.add('ingredient');
@@ -39,11 +49,11 @@ function createListItem(ingredient, quantity, unit) {
     unitElement.textContent = unit;
 
     const editButton = document.createElement('button');
-    editButton.classList.add('edit-btn');
+    editButton.classList.add('edit_btn');
     editButton.textContent = '✏️';
 
     const deleteButton = document.createElement('button');
-    deleteButton.classList.add('delete-btn');
+    deleteButton.classList.add('delete_btn');
     deleteButton.textContent = '❌';
 
     listItem.appendChild(ingredientElement);
