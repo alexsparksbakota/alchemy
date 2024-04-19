@@ -13,72 +13,13 @@
     <div id="main_cover">
         <img src="assets/alchemy-logo.png" alt="Alchemy Logo" id="cover_logo">
         <div id="upload_button_container">
-            <label for="take-picture">
-                <img src="assets/upload-icon.png" alt="" style="background-size: cover; width: 100%; height: 100%; border-radius: 50%;">
-            </label>
-            <input type="file" id="take-picture" style="display: none;" accept="image/*">
+            <form id="uploadForm" method="POST" enctype="multipart/form-data" action="http://localhost:3000/upload" style="display: block;">
+                <input type="file" id="take-picture" name="file" accept="image/*" required>
+                <button type="submit">Upload</button>
+            </form>
         </div>
     </div>
     <img src="about:blank" alt="" id="show-picture">
-
-    <script>
-    (function () {
-        var takePicture = document.querySelector("#take-picture"),
-            showPicture = document.querySelector("#show-picture");
-
-        if (takePicture && showPicture) {
-            // Set events
-            takePicture.onchange = function (event) {
-                // Get a reference to the taken picture or chosen file
-                var files = event.target.files,
-                    file;
-                if (files && files.length > 0) {
-                    file = files[0];
-                    try {
-                        // Get window.URL object
-                        var URL = window.URL || window.webkitURL;
-
-                        // Create ObjectURL
-                        var imgURL = URL.createObjectURL(file);
-
-                        // Set img src to ObjectURL
-                        showPicture.src = imgURL;
-
-                        // Revoke ObjectURL after imagehas loaded
-                        showPicture.onload = function() {
-                            URL.revokeObjectURL(imgURL);  
-                        };
-                    }
-                    catch (e) {
-                        try {
-                            // Fallback if createObjectURL is not supported
-                            var fileReader = new FileReader();
-                            fileReader.onload = function (event) {
-                                showPicture.src = event.target.result;
-                            };
-                            fileReader.readAsDataURL(file);
-                        }
-                        catch (e) {
-                            // Display error message
-                            var error = document.querySelector("#error");
-                            if (error) {
-                                error.innerHTML = "Neither createObjectURL or FileReader are supported";
-                            }
-                        }
-                    }
-                }
-                alert("Image uploaded successfully");
-                var continueBtn = document.createElement('a'); 
-                var link = document.createTextNode("Continue");
-                continueBtn.appendChild(link);
-                continueBtn.href = "modifyIngredients.html"; 
-                continueBtn.setAttribute('id','continue_btn');
-                document.body.appendChild(continueBtn);
-            };
-
-        }
-    })();
-    </script>
 </body>
 
 </html>
