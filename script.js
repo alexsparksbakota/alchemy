@@ -30,6 +30,7 @@ const ingredients = [
     ["Red Onion", 2, "pcs"],
     ["Arugula", 3, "pcs"],
     ["Sprouts", 1, "cup"],
+    ["Tomato", 2, "pcs"], // Duplicate ingredient
 ];
 
 function createListItem(ingredient, quantity, unit) {
@@ -79,6 +80,22 @@ function createListItem(ingredient, quantity, unit) {
 
     return listItem;
 }
+
+function removeRedundantIngredients(ingredientsList) {
+  const seenIngredients = {};
+  const filteredList = [];
+  for (const ingredient of ingredientsList) {
+    const [name, , ] = ingredient; // Destructure to get the ingredient name
+    if (!seenIngredients[name]) {
+      seenIngredients[name] = true;
+      filteredList.push(ingredient);
+    }
+  }
+  return filteredList;
+}
+
+// Apply the function before creating list items
+const filteredIngredients = removeRedundantIngredients(ingredients);
 
 ingredients.forEach(ingredient => {
     const listItem = createListItem(...ingredient);
