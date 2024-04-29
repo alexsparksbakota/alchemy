@@ -14,6 +14,44 @@ timeSlider.oninput = function () {
     timeLimitCount.innerHTML = this.value;
 }
 
+//AUTHORED BY Alex Sparks-Bakota 4/28/2024 ('Create variables for dietary preference inputs')
+const breakfastCheckbox = document.getElementById('breakfast');
+const lunchCheckbox = document.getElementById('lunch');
+const dinnerCheckbox = document.getElementById('dinner');
+const vegetarianCheckbox = document.getElementById('vegetarian');
+const veganCheckbox = document.getElementById('vegan');
+const ketoCheckbox = document.getElementById('keto');
+const eggetarianCheckbox = document.getElementById('eggetarian');
+const pescatarianCheckbox = document.getElementById('pescatarian');
+const paleoCheckbox = document.getElementById('paleo');
+const peanutsCheckbox = document.getElementById('peanuts');
+const milkCheckbox = document.getElementById('milk');
+const glutenCheckbox = document.getElementById('gluten');
+const fishCheckbox = document.getElementById('fish');
+const treenutsCheckbox = document.getElementById('treenuts');
+const soyCheckbox = document.getElementById('soy');
+const calorieSlider = document.getElementById('calorie_slider');
+const timeLimitSlider = document.getElementById('timelimit');
+const otherPreferencesInput = document.getElementById('other_preferences');
+
+const isBreakfastSelected = breakfastCheckbox.checked;
+const isLunchSelected = lunchCheckbox.checked;
+const isDinnerSelected = dinnerCheckbox.checked;
+const isVegetarianSelected = vegetarianCheckbox.checked;
+const isVeganSelected = veganCheckbox.checked;
+const isKetoSelected = ketoCheckbox.checked;
+const isEggetarianSelected = eggetarianCheckbox.checked;
+const isPescatarianSelected = pescatarianCheckbox.checked;
+const isPaleoSelected = paleoCheckbox.checked;
+const isPeanutsSelected = peanutsCheckbox.checked;
+const isMilkSelected = milkCheckbox.checked;
+const isGlutenSelected = glutenCheckbox.checked;
+const isFishSelected = fishCheckbox.checked;
+const isTreenutsSelected = treenutsCheckbox.checked;
+const isSoySelected = soyCheckbox.checked;
+const otherPreferences = otherPreferencesInput.value;
+
+
 const listContainer = document.getElementById('list_container');
 
 const ingredients = [
