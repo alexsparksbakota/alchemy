@@ -47,7 +47,7 @@ async function analyzeImage(image){
         const [result] = await client.objectLocalization(image);
         const objects = result.localizedObjectAnnotations;
         objects.forEach(object => {
-        console.log(object.name);
+            ingredientsList.push(object.name);
 
 
         
