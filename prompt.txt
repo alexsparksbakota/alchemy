@@ -1,0 +1,20 @@
+Generate a list of recipes that can be made using the following ingredients:
+
+    [ingredientsList]
+
+Additional Considerations:
+
+    Meal Type: Please consider recipes suitable for [mealType]
+    Cooking Time: The recipes should ideally have a cooking time of around [cookingTime] 
+    Dietary Restrictions: Please take into account the following dietary restrictions: [dietaryRestrictions]
+
+Output Format:
+
+For each recipe, please provide the following information:
+
+    Recipe Title: A clear and concise title for the recipe.
+    Ingredients: List of ingredients with quantities and units, matching the provided list as closely as possible.
+    Instructions: Step-by-step instructions for preparing the recipe.
+    Cooking Time: Estimated cooking time in minutes.
+
+Make sure that no ingredient, other than the ones in ingredientsList are used in the recipe.
