@@ -135,6 +135,30 @@ function removeRedundantIngredients(ingredientsList) {
 // Apply the function before creating list items
 const filteredIngredients = removeRedundantIngredients(ingredients);
 
+// AUTHORED BY BHAVIKA CHOUDHARY 04/28/2024
+// FUNCTION TO REMOVE COMMONLY MISIDENTIFIED LABELS FROM INGREDIENTS LIST
+const inaccurateLabels = [
+    "table",
+    "bowl",
+    "spoon",
+    "package",
+    "box",
+    "basket",
+    "chopsticks",
+    "knife",
+    "fork",
+    "utensil",
+    "plate",
+    "dish",
+    "food",
+    "bottle",
+    "tableware",
+];
+
+function removeInaccurateIngredients(ingredientList, inaccurateLabels) {
+    return ingredientList.filter(ingredient => !inaccurateLabels.includes(ingredient[0].toLowerCase()));
+  }
+
 ingredients.forEach(ingredient => {
     const listItem = createListItem(...ingredient);
     listContainer.appendChild(listItem);
