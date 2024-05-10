@@ -183,3 +183,61 @@ function getFormData() {
    }
     return { mealType: mealType.join(', '), dietaryRestrictions: dietaryRestrictions.join(', '), cookingTime, otherPreferences };
  }
+
+  // AUTHORED BY BHAVIKA CHOUDHARY
+  // LAST UPDATED ON: MAY 9, 2024
+  async function sendChatGPTRequest(ingredientsList, formData) {
+    const apiKey = 'sk-nOehe2e8wB3jbskdyjdbjGjadHIDkhI'; // Replace with your actual OpenAI API key
+    const url = 'https://api.openai.com/v1/completions';
+  
+    // Format ingredients list for the prompt
+    const formattedIngredients = ingredientsList.join(', ');
+  
+    const prompt = `Generate a list of recipes that can be made using the following ingredients:
+  
+    ${formattedIngredients}
+  
+    Additional Considerations:
+  
+    Meal Type: Please consider recipes suitable for ${formData.mealType}
+    Cooking Time: The recipes should ideally have a cooking time of around ${formData.cookingTime} minutes.
+    Dietary Restrictions: Please take into account the following dietary restrictions: ${formData.dietaryRestrictions}
+  
+    Output Format:
+  
+    For each recipe, please provide the following information:
+  
+    * Recipe Title: A clear and concise title for the recipe.
+    * Ingredients: List of ingredients with quantities and units, matching the provided list as closely as possible.
+    * Instructions: Step-by-step instructions for preparing the recipe.
+    * Cooking Time: Estimated cooking time in minutes.
+  
+    Make sure that no ingredient, other than the ones in ingredientsList, are used in the recipe.
+    `;
+
+  
+
+    
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify(data),
+    };
+  
+    try {
+      const response = await fetch(url, options);
+      if (!response.ok) {
+        throw new Error(`Error sending request to OpenAI: ${response.statusText}`);
+      }
+      const data = await response.json();
+      const recipes = data.choices[0].text.split('\n\n'); // Split response by recipe separators
+      return recipes;
+    } catch (error) {
+      console.error('Error sending request to OpenAI:', error);
+      return []; // Return empty array on error
+    }
+  }
+  
