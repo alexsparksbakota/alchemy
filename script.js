@@ -139,3 +139,23 @@ ingredients.forEach(ingredient => {
     const listItem = createListItem(...ingredient);
     listContainer.appendChild(listItem);
 });
+
+// Function to get form data
+//AUTHORED BY ALEX SPARKS-BAKOTA: 5/10/2024
+function getFormData() {
+   const mealType = [];
+   const dietaryRestrictions = [];
+   const cookingTime = document.getElementById('timelimit').value;
+   const otherPreferences = document.getElementById('other_preferences').value;
+    const checkboxes = form.querySelectorAll('input[type="checkbox"]');
+   for (const checkbox of checkboxes) {
+     if (checkbox.checked) {
+       if (checkbox.id.startsWith('meal')) {
+         mealType.push(checkbox.id.slice(4)); // Extract meal type from checkbox id
+       } else {
+         dietaryRestrictions.push(checkbox.id);
+       }
+     }
+   }
+    return { mealType: mealType.join(', '), dietaryRestrictions: dietaryRestrictions.join(', '), cookingTime, otherPreferences };
+ }
