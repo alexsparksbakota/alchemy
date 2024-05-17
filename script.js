@@ -241,3 +241,26 @@ function getFormData() {
     }
   }
   
+
+
+async function displayRecipes(recipes) {
+  
+    // Create a container element for the recipes
+    const recipeContainer = document.createElement('div');
+    recipeContainer.id = 'recipe-container';
+  
+    // Loop through each recipe
+    for (const recipe of recipes) {
+      // Parse the recipe data (assuming specific format)
+      const recipeData = parseRecipeData(recipe); // Replace with your parsing logic
+  
+      // Create a recipe card element
+      const recipeCard = createRecipeCard(recipeData);
+  
+      // Add the recipe card to the container
+      recipeContainer.appendChild(recipeCard);
+    }
+  
+    // Append the recipe container to the body (or new window)
+    document.body.appendChild(recipeContainer);
+  }
