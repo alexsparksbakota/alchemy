@@ -183,3 +183,21 @@ function getFormData() {
    }
     return { mealType: mealType.join(', '), dietaryRestrictions: dietaryRestrictions.join(', '), cookingTime, otherPreferences };
  }
+
+function parseRecipeData(recipe) {
+  const lines = recipe.split('\n');
+  const recipeTitle = lines.shift(); // Assuming first line is the title
+  const ingredients = [];
+  const instructions = [];
+
+  // Loop through remaining lines, separate ingredients and instructions
+  for (const line of lines) {
+    if (line.startsWith('- ')) {
+      instructions.push(line.slice(2)); // Remove leading hyphen
+    } else {
+      ingredients.push(line);
+    }
+  }
+
+  return { title: recipeTitle, ingredients, instructions };
+}
