@@ -184,6 +184,7 @@ function getFormData() {
     return { mealType: mealType.join(', '), dietaryRestrictions: dietaryRestrictions.join(', '), cookingTime, otherPreferences };
  }
 
+<<<<<<< HEAD
   // AUTHORED BY BHAVIKA CHOUDHARY
   // LAST UPDATED ON: MAY 9, 2024
   async function sendChatGPTRequest(ingredientsList, formData) {
@@ -241,3 +242,53 @@ function getFormData() {
     }
   }
   
+function parseRecipeData(recipe) {
+  const lines = recipe.split('\n');
+  const recipeTitle = lines.shift(); // Assuming first line is the title
+  const ingredients = [];
+  const instructions = [];
+
+  // Loop through remaining lines, separate ingredients and instructions
+  for (const line of lines) {
+    if (line.startsWith('- ')) {
+      instructions.push(line.slice(2)); // Remove leading hyphen
+    } else {
+      ingredients.push(line);
+    }
+  }
+
+  return { title: recipeTitle, ingredients, instructions };
+}
+>>>>>>> 9cace6ac97e84723014f19ae3ca2af1aebfacd08
+function createRecipeCard(recipeData) {
+  const card = document.createElement('div');
+  card.classList.add('recipe-card');
+
+  const titleElement = document.createElement('h3');
+  titleElement.textContent = recipeData.title;
+  card.appendChild(titleElement);
+
+  const ingredientsList = document.createElement('ul');
+  ingredientsList.classList.add('ingredients-list');
+  for (const ingredient of recipeData.ingredients) {
+    const ingredientItem = document.createElement('li');
+    ingredientItem.textContent = ingredient;
+    ingredientsList.appendChild(ingredientItem);
+  }
+  card.appendChild(ingredientsList);
+
+  const instructionsList = document.createElement('ol');
+  instructionsList.classList.add('instructions-list');
+  for (const instruction of recipeData.instructions) {
+    const instructionItem = document.createElement('li');
+    instructionItem.textContent = instruction;
+    instructionsList.appendChild(instructionItem);
+  }
+  card.appendChild(instructionsList);
+
+  return card;
+}
+
+// Call the function after receiving recipes from OpenAI
+const recipes = await sendChatGPTRequest(ingredientsList, formData);
+displayRecipes(recipes);
