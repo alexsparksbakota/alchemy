@@ -184,6 +184,7 @@ function getFormData() {
     return { mealType: mealType.join(', '), dietaryRestrictions: dietaryRestrictions.join(', '), cookingTime, otherPreferences };
  }
 
+<<<<<<< HEAD
   // AUTHORED BY BHAVIKA CHOUDHARY
   // LAST UPDATED ON: MAY 9, 2024
   async function sendChatGPTRequest(ingredientsList, formData) {
@@ -241,6 +242,7 @@ function getFormData() {
     }
   }
   
+<<<<<<< HEAD
 
 
 async function displayRecipes(recipes) {
@@ -264,16 +266,42 @@ async function displayRecipes(recipes) {
     // Append the recipe container to the body (or new window)
     document.body.appendChild(recipeContainer);
   }
+=======
+function parseRecipeData(recipe) {
+  const lines = recipe.split('\n');
+  const recipeTitle = lines.shift(); // Assuming first line is the title
+  const ingredients = [];
+  const instructions = [];
+
+  // Loop through remaining lines, separate ingredients and instructions
+  for (const line of lines) {
+    if (line.startsWith('- ')) {
+      instructions.push(line.slice(2)); // Remove leading hyphen
+    } else {
+      ingredients.push(line);
+    }
+  }
+
+  return { title: recipeTitle, ingredients, instructions };
+}
+>>>>>>> 9cace6ac97e84723014f19ae3ca2af1aebfacd08
+>>>>>>> 27c57538a75aec14ce32400d3f7812bbd5870938
 function createRecipeCard(recipeData) {
   const card = document.createElement('div');
   card.classList.add('recipe-card');
 
+<<<<<<< HEAD
   // Title section
+=======
+>>>>>>> 27c57538a75aec14ce32400d3f7812bbd5870938
   const titleElement = document.createElement('h3');
   titleElement.textContent = recipeData.title;
   card.appendChild(titleElement);
 
+<<<<<<< HEAD
   // Ingredients section
+=======
+>>>>>>> 27c57538a75aec14ce32400d3f7812bbd5870938
   const ingredientsList = document.createElement('ul');
   ingredientsList.classList.add('ingredients-list');
   for (const ingredient of recipeData.ingredients) {
@@ -283,15 +311,19 @@ function createRecipeCard(recipeData) {
   }
   card.appendChild(ingredientsList);
 
+<<<<<<< HEAD
   const instructionsSection = document.createElement('section');
   instructionsSection.classList.add('instructions-section');
   const instructionsTitle = document.createElement('h4');
   instructionsTitle.textContent = 'Instructions';
   instructionsSection.appendChild(instructionsTitle);
+=======
+>>>>>>> 27c57538a75aec14ce32400d3f7812bbd5870938
   const instructionsList = document.createElement('ol');
   instructionsList.classList.add('instructions-list');
   for (const instruction of recipeData.instructions) {
     const instructionItem = document.createElement('li');
+<<<<<<< HEAD
     // Emphasize step numbers (optional)
     instructionItem.textContent = `Step ${instructions.indexOf(instruction) + 1}: ${instruction}`;
     instructionsList.appendChild(instructionItem);
@@ -301,3 +333,16 @@ function createRecipeCard(recipeData) {
 
   return card;
 }
+=======
+    instructionItem.textContent = instruction;
+    instructionsList.appendChild(instructionItem);
+  }
+  card.appendChild(instructionsList);
+
+  return card;
+}
+
+// Call the function after receiving recipes from OpenAI
+const recipes = await sendChatGPTRequest(ingredientsList, formData);
+displayRecipes(recipes);
+>>>>>>> 27c57538a75aec14ce32400d3f7812bbd5870938
