@@ -264,3 +264,40 @@ async function displayRecipes(recipes) {
     // Append the recipe container to the body (or new window)
     document.body.appendChild(recipeContainer);
   }
+function createRecipeCard(recipeData) {
+  const card = document.createElement('div');
+  card.classList.add('recipe-card');
+
+  // Title section
+  const titleElement = document.createElement('h3');
+  titleElement.textContent = recipeData.title;
+  card.appendChild(titleElement);
+
+  // Ingredients section
+  const ingredientsList = document.createElement('ul');
+  ingredientsList.classList.add('ingredients-list');
+  for (const ingredient of recipeData.ingredients) {
+    const ingredientItem = document.createElement('li');
+    ingredientItem.textContent = ingredient;
+    ingredientsList.appendChild(ingredientItem);
+  }
+  card.appendChild(ingredientsList);
+
+  const instructionsSection = document.createElement('section');
+  instructionsSection.classList.add('instructions-section');
+  const instructionsTitle = document.createElement('h4');
+  instructionsTitle.textContent = 'Instructions';
+  instructionsSection.appendChild(instructionsTitle);
+  const instructionsList = document.createElement('ol');
+  instructionsList.classList.add('instructions-list');
+  for (const instruction of recipeData.instructions) {
+    const instructionItem = document.createElement('li');
+    // Emphasize step numbers (optional)
+    instructionItem.textContent = `Step ${instructions.indexOf(instruction) + 1}: ${instruction}`;
+    instructionsList.appendChild(instructionItem);
+  }
+  instructionsSection.appendChild(instructionsList);
+  card.appendChild(instructionsSection);
+
+  return card;
+}
