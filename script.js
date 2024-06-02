@@ -85,104 +85,240 @@ document.addEventListener('DOMContentLoaded', () => {
       return deleteButton;
     }
 
-async function displayRecipes(recipes) {
+    // Fetch ingredients and populate the list
+    fetchIngredients()
+      .then(ingredients => {
+        // Filter out unwanted ingredients 
+        const filteredIngredients = ingredients.filter(ingredientData => {
+          return ![
+            "Drink", "Fruit", "Cuisine", "Curring board", 'Food', 'Tableware', 'Dishware',
+            'Ingredient', 'Natural foods', 'Recipe', 'Cutting board', 'Dish', 'Food group', 'Vegetable', 'Whole food',
+            'Superfood', 'Produce', 'Plant', 'Local food', 'Serveware', 'Bowl', 'Knife', 'Finger food', 'Comfort food',
+            'Vegan nutrition', 'Plate', 'Kitchen utensil',
+            'Wood', 'Platter', 'Table', 'Meal', 'Fashion accessory',
+            'Still life photography', 'Lunch', 'Nightshade family', 'Delicacy', 'Spoon',
+            'Still life', 'Root vegetable', 'Supper', 'Japanese cuisine', 'Side dish', 'Brunch', 'Breakfast', 'Vegetarian food', 'appetizer'
+          ].includes(ingredientData.name || ingredientData);
+        });
   
-    // Create a container element for the recipes
-    const recipeContainer = document.createElement('div');
-    recipeContainer.id = 'recipe-container';
-  
-    // Loop through each recipe
-    for (const recipe of recipes) {
-      // Parse the recipe data (assuming specific format)
-      const recipeData = parseRecipeData(recipe); // Replace with your parsing logic
-  
-      // Create a recipe card element
-      const recipeCard = createRecipeCard(recipeData);
-  
-      // Add the recipe card to the container
-      recipeContainer.appendChild(recipeCard);
+        filteredIngredients.forEach(ingredientData => {
+          const processedIngredient = [
+            ingredientData.name || ingredientData, // Handle potential absence of a "name" property
+            1, // Default quantity
+            "unit", // Default unit
+            createEditButton(),
+            createDeleteButton()
+          ];
+          const listItem = createListItem(...processedIngredient);
+          listContainer.appendChild(listItem);
+        });
+      });
+    // Function to send prompt to server and handle response
+    async function generateRecipes(prompt) {
+      try {
+        const response = await fetch('/generate-recipes', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ prompt }),
+        });
+    
+        if (!response.ok) {
+          throw new Error(`Error generating recipes: ${response.statusText}`);
+        } else {
+          console.log(response)
+        }
+    
+        const recipeData = await response.json();
+        // Handle the response data here
+        console.log('Generated recipes:', recipeData);
+    
+        // Redirect user to recipes.html and pass the generated recipes as URL parameters
+        const queryParams = new URLSearchParams();
+        queryParams.append('recipes', JSON.stringify(recipeData.recipes));
+        window.location.href = `recipes.html?${queryParams.toString()}`;
+      } catch (error) {
+        console.error('Error generating recipes:', error);
+      }
     }
+    
+
   
-    // Append the recipe container to the body (or new window)
-    document.body.appendChild(recipeContainer);
-  }
-=======
-function parseRecipeData(recipe) {
-  const lines = recipe.split('\n');
-  const recipeTitle = lines.shift(); // Assuming first line is the title
-  const ingredients = [];
-  const instructions = [];
+    // Handle form submission
+    const preferencesForm = document.getElementById('preferences_form');
+    preferencesForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
 
-  // Loop through remaining lines, separate ingredients and instructions
-  for (const line of lines) {
-    if (line.startsWith('- ')) {
-      instructions.push(line.slice(2)); // Remove leading hyphen
-    } else {
-      ingredients.push(line);
+    const preferences = {
+        mealType: {
+        breakfast: document.getElementById('breakfast').checked,
+        lunch: document.getElementById('lunch').checked,
+        dinner: document.getElementById('dinner').checked
+        },
+        dietaryRestrictions: {
+        vegetarian: document.getElementById('vegetarian').checked,
+        vegan: document.getElementById('vegan').checked,
+        keto: document.getElementById('keto').checked,
+        eggetarian: document.getElementById('eggetarian').checked,
+        pescatarian: document.getElementById('pescatarian').checked,
+        paleo: document.getElementById('paleo').checked
+        },
+        allergies: {
+        peanuts: document.getElementById('peanuts').checked,
+        milk: document.getElementById('milk').checked,
+        gluten: document.getElementById('gluten').checked,
+        fish: document.getElementById('fish').checked,
+        treenuts: document.getElementById('treenuts').checked,
+        soy: document.getElementById('soy').checked
+        },
+        calories: document.getElementById('calorie_slider').value,
+        timeLimit: document.getElementById('timelimit').value,
+        otherPreferences: document.getElementById('other_preferences').value
+    };
+
+
+    // Extract Relevant Variables
+    const ingredientElements = listContainer.querySelectorAll('.ingredient');
+    const quantityElements = listContainer.querySelectorAll('.quantity');
+    const unitElements = listContainer.querySelectorAll('.unit');
+
+    const ingredientsList = [];
+    ingredientElements.forEach((ingredientElement, index) => {
+        const ingredient = ingredientElement.textContent;
+        const quantity = quantityElements[index].textContent;
+        const unit = unitElements[index].textContent;
+        ingredientsList.push(`${quantity} ${unit} ${ingredient}`);
+    });
+
+    // Convert mealType object to a string
+    const selectedMealTypes = Object.entries(preferences.mealType)
+        .filter(([_, isSelected]) => isSelected)
+        .map(([mealType]) => mealType)
+        .join(', ');
+
+    // Format dietaryRestrictions as key-value pairs
+    const dietaryRestrictions = Object.entries(preferences.dietaryRestrictions)
+        .filter(([_, isSelected]) => isSelected)
+        .map(([restriction, _]) => restriction)
+        .join(', ');
+
+    const timeLimit = preferences.timeLimit;
+    const otherPreferences = preferences.otherPreferences;
+
+    console.log('Ingredients List:', ingredientsList);
+    console.log('Selected Meal Types:', selectedMealTypes);
+    console.log('Time Limit:', timeLimit);
+    console.log('Dietary Restrictions:', dietaryRestrictions);
+    console.log('Other Preferences:', otherPreferences);
+
+    // Construct the Prompt String 
+    const prompt = `Generate a list of recipes that can be made using the following ingredients:\n\n${ingredientsList.join('\n')}\n\nAdditional Considerations:\n\nMeal Type: Please consider recipes suitable for ${selectedMealTypes}\nCooking Time: The recipes should ideally have a cooking time of around ${timeLimit} minutes\nDietary Restrictions: Please take into account the following dietary restrictions: ${dietaryRestrictions}\nAdditional Directions: ${otherPreferences}\n\nOutput Format:\n\nFor each recipe, please provide the following information:\n\nRecipe Title: A clear and concise title for the recipe.\nIngredients: List of ingredients with quantities and units, matching the provided list as closely as possible.\nInstructions: Step-by-step instructions for preparing the recipe.\nCooking Time: Estimated cooking time in minutes.\n\nMake sure that no ingredient, other than the ones in ingredientsList are used in the recipe.`;
+
+    console.log('Prompt:', prompt);
+    // Call the function to send the prompt to the server
+    await generateRecipes(prompt);
+    });
+  });  
+
+// Update calorie count in real time
+const calorieSlider = document.getElementById('calorie_slider');
+const calorieCount = document.getElementById('calorie_count');
+calorieCount.textContent = calorieSlider.value;
+calorieSlider.addEventListener('input', () => {
+    calorieCount.textContent = calorieSlider.value;
+});
+
+// Update time limit count in real time
+const timeLimitSlider = document.getElementById('timelimit');
+const timeLimitCount = document.getElementById('time_limit_count');
+timeLimitCount.textContent = timeLimitSlider.value;
+timeLimitSlider.addEventListener('input', () => {
+    timeLimitCount.textContent = timeLimitSlider.value;
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const recipesParam = urlParams.get('recipes');
+    let recipes;
+
+    try {
+        recipes = JSON.parse(decodeURIComponent(recipesParam));
+    } catch (error) {
+        console.error('Failed to parse recipes:', error);
+        return;
     }
-  }
 
-  return { title: recipeTitle, ingredients, instructions };
-}
->>>>>>> 9cace6ac97e84723014f19ae3ca2af1aebfacd08
->>>>>>> 27c57538a75aec14ce32400d3f7812bbd5870938
-function createRecipeCard(recipeData) {
-  const card = document.createElement('div');
-  card.classList.add('recipe-card');
+    const recipesContainer = document.getElementById('recipes-container');
 
-<<<<<<< HEAD
-  // Title section
-=======
->>>>>>> 27c57538a75aec14ce32400d3f7812bbd5870938
-  const titleElement = document.createElement('h3');
-  titleElement.textContent = recipeData.title;
-  card.appendChild(titleElement);
+    recipes.forEach((recipeText, index) => {
 
-<<<<<<< HEAD
-  // Ingredients section
-=======
->>>>>>> 27c57538a75aec14ce32400d3f7812bbd5870938
-  const ingredientsList = document.createElement('ul');
-  ingredientsList.classList.add('ingredients-list');
-  for (const ingredient of recipeData.ingredients) {
-    const ingredientItem = document.createElement('li');
-    ingredientItem.textContent = ingredient;
-    ingredientsList.appendChild(ingredientItem);
-  }
-  card.appendChild(ingredientsList);
+        // Parse individual recipe
+        const recipeParts = recipeText.split('\n');
+        const recipeTitle = recipeParts[1].split(': ')[1];
+        const ingredientsIndex = recipeParts.findIndex(part => part.startsWith('Ingredients:'));
+        const instructionsIndex = recipeParts.findIndex(part => part.startsWith('Instructions:'));
+        
+        const ingredients = recipeParts.slice(ingredientsIndex + 1, instructionsIndex).map(ingredient => ingredient.replace('- ', ''));
+        const instructions = recipeParts.slice(instructionsIndex + 1);
+        
+        // Construct recipe object
+        const recipe = {
+            title: recipeTitle,
+            ingredients: ingredients,
+            instructions: instructions,
+            cookingTime: recipeParts[recipeParts.length - 1].split(': ')[1]
+        };
 
-<<<<<<< HEAD
-  const instructionsSection = document.createElement('section');
-  instructionsSection.classList.add('instructions-section');
-  const instructionsTitle = document.createElement('h4');
-  instructionsTitle.textContent = 'Instructions';
-  instructionsSection.appendChild(instructionsTitle);
-=======
->>>>>>> 27c57538a75aec14ce32400d3f7812bbd5870938
-  const instructionsList = document.createElement('ol');
-  instructionsList.classList.add('instructions-list');
-  for (const instruction of recipeData.instructions) {
-    const instructionItem = document.createElement('li');
-<<<<<<< HEAD
-    // Emphasize step numbers (optional)
-    instructionItem.textContent = `Step ${instructions.indexOf(instruction) + 1}: ${instruction}`;
-    instructionsList.appendChild(instructionItem);
-  }
-  instructionsSection.appendChild(instructionsList);
-  card.appendChild(instructionsSection);
+        console.log('Recipe:', recipe); // Log the recipe object to verify its structure
 
-  return card;
-}
-=======
-    instructionItem.textContent = instruction;
-    instructionsList.appendChild(instructionItem);
-  }
-  card.appendChild(instructionsList);
+        // Ensure the recipe has ingredients property
+        if (!recipe.ingredients) {
+            console.error('Recipe is missing ingredients:', recipe);
+            return;
+        }
 
-  return card;
-}
+        // Create recipe element
+        const recipeElement = document.createElement('div');
+        recipeElement.classList.add('recipe');
+        
+        const titleElement = document.createElement('h2');
+        titleElement.textContent = recipe.title;
+        
+        const ingredientsElement = document.createElement('ul');
+        recipe.ingredients.forEach(ingredient => {
+            const li = document.createElement('li');
+            li.textContent = ingredient;
+            ingredientsElement.appendChild(li);
+        });
 
-// Call the function after receiving recipes from OpenAI
-const recipes = await sendChatGPTRequest(ingredientsList, formData);
-displayRecipes(recipes);
->>>>>>> 27c57538a75aec14ce32400d3f7812bbd5870938
+        const instructionsElement = document.createElement('ol');
+        recipe.instructions.forEach(instruction => {
+            const li = document.createElement('li');
+            li.textContent = instruction;
+            instructionsElement.appendChild(li);
+        });
+
+        const cookingTimeElement = document.createElement('p');
+        cookingTimeElement.textContent = `Cooking Time: ${recipe.cookingTime}`;
+        
+        recipeElement.appendChild(titleElement);
+        recipeElement.appendChild(ingredientsElement);
+        recipeElement.appendChild(instructionsElement);
+        recipeElement.appendChild(cookingTimeElement);
+        recipesContainer.appendChild(recipeElement);
+    });
+});
+
