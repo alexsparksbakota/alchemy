@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "mineral-oxide-419922",
+  "private_key_id": "cde5deff96453c76a3e8d56b2c48e6b709dc3607",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQC5HTe/7Y8t4Xm9\nw9cVyEstgjvCnorkP0Ti66PHli81G9GXq49JPBCLhcUSRoHUogEj9KgGmPzANQMu\nfbOcblZ9gFDg5fclRQxILjUiP8x1MmUR1zR67YiIYY6pNKNqUZBRR4IKCmlTe+ZQ\n8K73YlCow+BQL3Il4FM2PHQnM/9wXs1SPc0txZgMPLJNa1sj47eIazUmgxYfvJAG\npcqSVNJJbDEUnrCnO+opG9jqpit5iBgn9znIk2+f6t8OTb9OgQO9oGG1ZhI8tTgk\n1T3TCqZLEQ3fkoQ9wbm313IYUD3gjWRiI8rTRv2/GTqgxcDb4AlwGbbsYKtyGrMB\nPxUMd5UNAgMBAAECggEAEfq3LM+zVbl4oZMhPjReA5A1TbR9uP2MK0jHzN2BaEnI\nvvp4HZzVM+KiPswqVVoG0lSI8rBunByKBTygR/6k1+Zb9Ka2rSAFDrMDkM1cMRCG\npdzzyUduOLuA/Qjny65wXfScD22Yx/WuFl50yqz54z+4dxFPUkPKJpJolbDZ4TKp\nsJRXxvGIlS7oXXm0p1gbMj4p3Ih0Y5idcoUTTv4254bzyrurIIXSMuEcWzDRW9AR\nZ+UpOcxLeyjia8M/m4cnJB5YJkfJcGPT/nlMK1lJwQ1hodchB1IZQBflygrvpbh1\n131DrovP1MFObvLVjVk5+Aj48Rxf2LIjvMtqHubJ4QKBgQDjH/5e7rQdr5O8iGsn\nmZxyUSm2+A8Sd1c5myrZPtmew1lWTlsT/bafe3k7MLJwAdcjgYAL0d+I/tNeaO8N\nmuN99EkhgzG2LdWSUMugXhMtMGD+PckE+g4GQVXPxH+dp5pe4ORnRbeu+DuZ4A28\n0WynzRIdSPD5WatA6bcy88Kb9wKBgQDQpfCW3kc6YwIS+qYHGPDVegQyWzCEum07\nX+c+Ko8E9jvMA4YxCBMtlgPQLJstZIs1iVoSA5CeXcd8Yjgp+bKmeQGaUAWcZkh3\ngxE7B/+GoWzsYPqbv1cEIdeEbz28ZvRFv4pxIJ3Z9h29swwhokFTABwLjw9ZThYl\nBhVi6jtuGwKBgQCDZCnKj3rhRYZI5f5fXU0VEQD52U0W2LU8HRjPrr1ETCxtckzc\nJsU0Q8DhTg2cIGRuJOeHbvVLEmgC0N+iVj1OyzhXS8dBZgiMaXMzJdkgJkGmMuYM\nm//q/HcBB+LvuFrkkmNvnvRhIzePj/9CgUDDXi4hhOXqykX4+nvB3SRzBwKBgQCg\nprRJpdpYJXWqYV3G5zhAVtO2ZipEeDq01dH6NtCqNGG0Yx5G0H3bwr8q4b2VxO2/\nCgPVDPOkTHbV2dZ+02jv7woB5A197+9qPfvdZPolklOI6d7sXvZEEz6bFQAG+Yqp\nzaJuGnwQIAWkU6FKoGEF5Hazm7Jow8wfM8DxyYJ68wKBgQCUnsnNiCaMvpaOMaOX\nWszMNEmKulZRAoms8qxXAYOBH4W+nWMe/usEhgE/kQDrRYhJZipSBTdgBQ7+TmBM\n8bfBFl3i4X9w73pA/zmTxDuBR/TS5Cqjy8B6NTXrLNo6PXSBy0TbD/CvoJkYcces\nh0IC4WCeCVfX/3iK2fqwq8L1pA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "cloudvision@mineral-oxide-419922.iam.gserviceaccount.com",
+  "client_id": "113470959027316171314",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/cloudvision%40mineral-oxide-419922.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
