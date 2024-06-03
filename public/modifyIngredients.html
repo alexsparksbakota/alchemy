@@ -1,0 +1,81 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alchemy</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Jost' rel='stylesheet'>
+</head>
+
+<body id="modifyIngredients_body">
+    <div class="container">
+        <div class="ingredients-column" style="background-color:#fff5e1;text-align: center;">
+            <h1 class="page_title" style="color: #32594a;"> Modify Ingredients </h1>
+            <div id="list_container"></div>
+        </div>
+        <div class="preferences-column" style="background-color:#32594a; text-align: center;">
+            <h1 class="page_title" style="color: #fff5e1;"> Specify Dietary Prefrences </h1>
+            <div id="input_form_container">
+                <form>
+                    <h3 class="form_subheadings">MEAL TYPE</h3>
+                    <input type="checkbox" id="breakfast">
+                    <label for="breakfast" class="input_form_labels">BREAKFAST</label>
+                    <input type="checkbox" id="lunch">
+                    <label for="breakfast" class="input_form_labels">LUNCH</label>
+                    <input type="checkbox" id="dinner">
+                    <label for="breakfast" class="input_form_labels">DINNER</label>
+                    <br>
+                    <h3 class="form_subheadings">DIETARY RESTRICTIONS</h3>
+                    <input type="checkbox" id="vegetarian">
+                    <label for="breakfast" class="input_form_labels">VEGETARIAN</label>
+                    <input type="checkbox" id="vegan">
+                    <label for="breakfast" class="input_form_labels">VEGAN</label>
+                    <input type="checkbox" id="keto">
+                    <label for="breakfast">KETO</label>
+                    <br></br>
+                    <input type="checkbox" id="eggetarian">
+                    <label for="breakfast" class="input_form_labels">EGGETARIAN</label>
+                    <input type="checkbox" id="pescatarian">
+                    <label for="breakfast" class="input_form_labels">PESCATARIAN</label>
+                    <input type="checkbox" id="paleo">
+                    <label for="breakfast" class="input_form_labels">PALEO</label>
+                    <h3 class="form_subheadings">ALLERGIES/INTOLERANCES</h3>
+                    <input type="checkbox" id="peanuts">
+                    <label for="breakfast" class="input_form_labels">PEANUTS</label>
+                    <input type="checkbox" id="milk">
+                    <label for="breakfast" class="input_form_labels">MILK</label>
+                    <input type="checkbox" id="gluten">
+                    <label for="breakfast" class="input_form_labels">GLUTEN</label>
+                    <br></br>
+                    <input type="checkbox" id="fish">
+                    <label for="breakfast" class="input_form_labels">FISH</label>
+                    <input type="checkbox" id="treenuts">
+                    <label for="breakfast" class="input_form_labels">TREE NUTS</label>
+                    <input type="checkbox" id="soy">
+                    <label for="breakfast" class="input_form_labels">SOY</label>
+                    <br>
+                    <label for="calorie_slider">
+                        <h3>CALORIES</h3>
+                    </label>
+                    <input type="range" min="100" max="3000" id="calorie_slider">
+                    <p><span id="calorie_count"></span> calories</p>
+                    <label for="timelimit">
+                        <h3>TIME LIMIT</h3>
+                    </label>
+                    <input type="range" min="0" max="200" id="timelimit">
+                    <p><span id="time_limit_count"></span> minutes</p>
+                    <label for="other_preferences">
+                        <h3>OTHER PREFERENCES</h3>
+                    </label>
+                    <p>Please describe any other dietary preferences/restrictions you may have.</p>
+                    <input type="text" id="other_preferences">
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alchemy</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Jost' rel='stylesheet'>
+</head>
+
+<body id="index_page_body">
+    <div id="main_cover">
+        <img src="assets/alchemy-logo.png" alt="Alchemy Logo" id="cover_logo">
+        <div id="upload_button_container">
+            <form id="uploadForm" method="POST" enctype="multipart/form-data" action="http://localhost:3000/upload" style="display: block;">
+                <input type="file" id="take-picture" name="file" accept="image/*" required>
+                <button type="submit">Upload</button>
+            </form>
+        </div>
+    </div>
+    <img src="about:blank" alt="" id="show-picture">
+</body>
+
+</html>

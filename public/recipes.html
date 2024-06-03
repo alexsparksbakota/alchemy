@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generated Recipes</title>
+</head>
+<body>
+  <h1>Generated Recipes</h1>
+  <p id="recipes_list"></p>
+
+  <script>
+    // Retrieve recipes from URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const recipesJSON = urlParams.get('recipes');
+    const recipes = JSON.parse(recipesJSON);
+
+    // Display recipes
+    const recipesList = document.getElementById('recipes_list');
+    recipes.forEach(recipe => {
+      const recipeItem = document.createElement('li');
+      recipeItem.textContent = recipe;
+      recipesList.appendChild(recipeItem);
+    });
+  </script>
+</body>
+</html>
