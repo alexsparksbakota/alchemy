@@ -16,6 +16,7 @@ Within a particular ecosystem, there may be a common way of installing things, s
 
 ## Usage
 To use the Alchemy web application, follow these steps:
+
 **Homepage:**
 
 Navigate to the homepage's single upload button to upload an image of the ingredients that you would like to be scanned.
@@ -53,7 +54,7 @@ Here, all of the recipes are displayed with their titles shown above.
 The recipes list all of the ingredients along with the measurement required to create the recipe, the cooking time required, and the cooking instructions.
 
 ## Support
-For additional help or feedback, feel free to contact [](ajs656@drexel.edu)
+For additional help or feedback, feel free to contact ajs656@drexel.edu
 
 ## Roadmap (NOT ADDED)
 If you have ideas for releases in the future, it is a good idea to list them in the README.
