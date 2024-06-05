@@ -8,11 +8,32 @@ Using two powerful APIs, Alchemy intends to empower individuals with a limited v
 
 Our web app also accomodates for dietary preferences, dietary restrictions, and ingredient quantities to produce recipes that fit your personal needs.
 
-## Visuals (NOT ADDED)
+## Set Up 
+- Ensure the server environment has Node.js and npm installed.
+- Clone the repository on the server.
+- Install dependencies using npm install.
+- Start the server using npm start.
 
+## Dependencies
+Node.js: JavaScript runtime environment.
+Express: Web framework for Node.js.
+Multer: Middleware for handling file uploads.
 
-## Installation (NOT ADDED)
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+## Integrations
+File System: For storing uploaded files locally in the public/uploads directory.
+
+## Changing the Codebase and Contributing
+1. Add New Features
+- Create a new branch for the feature.
+- Implement the feature.
+- Open a pull request for review.
+
+2. Fix Bugs
+- Open an issue describing the bug.
+- Create a branch to fix the bug.
+- Implement the fix and open a pull request.
+3. Code Review
+- All changes should be reviewed by at least one other team member before merging.
 
 ## Usage
 To use the Alchemy web application, follow these steps:
@@ -54,17 +75,7 @@ Here, all of the recipes are displayed with their titles shown above.
 The recipes list all of the ingredients along with the measurement required to create the recipe, the cooking time required, and the cooking instructions.
 
 ## Support
-For additional help or feedback, feel free to contact ajs656@drexel.edu
-
-## Roadmap (NOT ADDED)
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing (NOT ADDED)
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+For any questions or issues, please contact the project maintainers at ajs656@drexel.edu or bc973@drexel.edu
 
 ## Authors and acknowledgment
 Alchemy's authors are listed below:
