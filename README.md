@@ -27,7 +27,7 @@ Once the image is successfully uploaded you will receive a confirmation. The web
 
 Then navigate to the ‘continue’ button to move on to the next page.
 
-**Modify Ingredients**
+**Modify Ingredients:**
 
 This page will allow you to view and edit the scanned ingredient list, which is to create your generated recipes.
 
@@ -35,7 +35,7 @@ Click on the '✏️' button of any ingredient to modify ingredient's quantity o
 
 Click on the '❌' button of any ingredient to delete that ingredient.
 
-**Specify Dietary Preferences**
+**Specify Dietary Preferences:**
 
 Click the checkboxes of any of the dietary preferences to indicate this selection for use in recipe generation.
 
@@ -47,7 +47,7 @@ An example of this request may look like: 'I don't have access to a frying pan'
 
 After all forms are filled, navigate to the 'Submit' button to continue to the next page.
 
-**Explore Recipes**
+**Explore Recipes:**
 
 Here, all of the recipes are displayed with their titles shown above. 
 
